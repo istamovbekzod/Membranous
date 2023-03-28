@@ -1,0 +1,152 @@
+//<ОСНОВНОЙ БЛОК>=====================================================================================================
+.link {
+	position: relative;
+	display: inline-block;
+	width: 150px;
+	height: 40px;
+	border-radius: 5px;
+	overflow: hidden;
+	@media (max-width:$md2+px){
+		width: 130px;
+		height: 35px;
+	}
+}
+.link span {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+	color: #fff;
+	background-color: #136D84;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	text-transform: uppercase;
+	letter-spacing: 2px;
+	font-size: 16px;
+	@media (max-width:$md2+px){
+		font-size: 14px;
+	}
+}
+.link span:nth-child(2) {
+	color: #136D84;
+	background-color: #fff;
+	overflow: hidden;
+	z-index: 2;
+	transition: all 0.5s ease 0s;
+	clip-path: polygon(60% 0, 100% 0%, 100% 100%,60% 100%, 40% 47%);
+}
+.link span:nth-child(2):hover {
+	clip-path: polygon(0 0, 100% 0%, 100% 100%,0 100%, 0 50%);
+}
+.link span:nth-child(1):hover ~ span:nth-child(2) {
+	clip-path: polygon(100% 0, 100% 0%, 100% 100%, 100% 100%, 100% 50%);
+}
+//====================================================================================================================
+.preloader {
+	position: fixed;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	background: #0E97AA;
+	z-index: 150;
+	transition: all 0.8s ease 0s;
+	opacity: 1;
+	visibility: visible;
+	&.done {
+		opacity: 0;
+		visibility: hidden;
+	}
+	//SECOND-VARIANT================
+	/*
+	@include flexbox();
+	justify-content: center;
+	align-items: center;
+	*/
+}
+//SECOND-VARIANT=========================================================================
+/*.loader {
+	font-family: Poppins;
+	font-weight: 600;
+	font-size: 30px;
+	color: #fff;
+	position: relative;
+}
+.text::before {
+	content: '';
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+	background: #0E97AA;
+	animation: animate 4s steps(12) infinite;
+}
+@keyframes animate {
+	40%, 60% {
+		left: 100%;
+	}
+	100% {
+		left: 0%;
+	}
+}
+*/
+//MAIN-VARIANT============================================================================
+.loader {
+	position: relative;
+	top: 50%;
+
+}
+.loader::before,
+.loader::after {
+	content: '';
+	position: absolute;
+	width: 30px;
+	height: 30px;
+	background-color: #fff;
+}
+.loader::before {
+	top: calc(50% - 30px);
+	left: calc(50% - 30px);
+	animation: loader-1 2.4s cubic-bezier(0, 0, 0.24, 1.21) infinite;
+}
+.loader::after {
+	top: 50%;
+	left: 50%;
+	animation: loader 2.4s cubic-bezier(0, 0, 0.24, 1.21) infinite;
+}
+@keyframes loader {
+	0%, 100% {
+		transform: none;
+	}
+	25% {
+		transform: translateX(-100%);
+	}
+	50% {
+		transform: translateX(-100%) translateY(-100%);
+	}
+	75% {
+		transform: translateY(-100%);
+	}
+}
+@keyframes loader-1 {
+	0%, 100% {
+		transform: none;
+	}
+	
+	25% {
+		transform: translateX(100%);
+	}
+	
+	50% {
+		transform: translateX(100%) translateY(100%);
+	}
+	
+	75% {
+		transform: translateY(100%);
+	}
+}
+
+//</ОСНОВНОЙ БЛОК>====================================================================================================

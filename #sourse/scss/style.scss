@@ -1,0 +1,299 @@
+//<МИКСИНЫ>==============================================================================================================
+@import "mixins.scss";
+//<МИКСИНЫ>==============================================================================================================
+
+//<ШРИФТЫ>===============================================================================================================
+
+//<Подключаем шрифты>====================================================================================================
+@import url('https://fonts.googleapis.com/css?family=Rubik:300,regular,500,600,700,800,900&display=swap&subset=cyrillic-ext');
+@import url('https://fonts.googleapis.com/css?family=Poppins:600&display=swap');
+//<Подключаем шрифты>====================================================================================================
+
+//<Иконочные шрифты>=====================================================================================================
+//@import "icons.scss";
+//<Иконочные шрифты>=====================================================================================================
+
+//<Шрифт по умолчанию>===================================================================================================
+$fontfamily: "Rubik";
+//<Шрифт по умолчанию>===================================================================================================
+
+//<ШРИФТЫ>===============================================================================================================
+
+//<ПЕРЕМЕННЫЕ>===========================================================================================================
+$maxWidth: 1900;
+$minwidth: 320px;
+$mw: 1000;
+$md1: 1200;
+$md2: 1110;
+$md3: 767.98;
+$md4: 479.98;
+//<ПЕРЕМЕННЫЕ>===========================================================================================================
+
+//<ОБНУЛЕНИЕ, ОБЩИЕ ПАРАМЕТРЫ>===========================================================================================
+@import "null.scss";
+body {
+	color: #000;
+	font-size: 14px;
+}
+//<ОБНУЛЕНИЕ, ОБЩИЕ ПАРАМЕТРЫ>===========================================================================================
+
+//<ОБОЛОЧКА>=============================================================================================================
+.wrapper {
+	width: 100%;
+	min-height: 100%;
+	overflow: hidden;
+	@include flexbox();
+	flex-direction: column;
+	counter-reset: item;
+}
+//<ОБОЛОЧКА>=============================================================================================================
+
+//<ОСНОВНАЯ СЕТКА>=======================================================================================================
+._container {
+	max-width: $mw + px;
+	margin: 0 auto;
+	width: 100%;
+	@media (max-width: $md1+px) {
+		max-width: 970px;
+	}
+	@media (max-width: $md2+px) {
+		max-width: 740px;
+	}
+	@media (max-width: $md3+px) {
+		max-width: none;
+		padding: 0 15px;
+	}
+}
+//<ОСНОВНАЯ СЕТКА>========================================================================================================
+
+//<ПОДКЛЮЧЕНИЕ ФАЙЛОВ UI СТИЛЕЙ, ФОРМ И ГОТОВЫХ КЛАССОВ>==================================================================
+@import "forms.scss";
+@import "ui.scss";
+@import "exaple.scss";
+//<ПОДКЛЮЧЕНИЕ ФАЙЛОВ UI СТИЛЕЙ, ФОРМ И ГОТОВЫХ КЛАССОВ>==================================================================
+
+//<ОСНОВНОЙ БЛОК>=========================================================================================================
+.page {
+	background-color: #fff;
+	&:before {
+		position: absolute;
+		top: 50%;
+		left: 0px;
+		transform: translate(50%, -50%);
+		font-weight: 700;
+		font-size: 25px;
+		color: #0B7689;
+		counter-increment: item;
+		content: counter(item, decimal-leading-zero);
+		@media (max-width: 850px){
+			top: 20px;
+			left: 50%;
+			transform: translate(-50%, 0);
+		}
+	}
+}
+//========================================================================================================================
+.remgikom {
+	&__container {
+	}
+
+	&__box {
+		padding: 15px 25px;
+		background: rgba(4, 143, 156, 0.3);
+		border-radius: 20px;
+		@media (max-width:$md2+px){
+			padding: 10px 15px;
+		}
+		@media (max-width:$md3+px){
+			padding: 5px 10px;
+		}
+		@media (max-width:$md3+px){
+			border-radius: 10px;
+		}
+	}
+
+	&__body {
+		padding: 130px 40px;
+		border-radius: 20px;
+		background: url('../img/main-bg/волны.jpg') center / cover no-repeat;
+		position: relative;
+		z-index: 2;
+		overflow: hidden;
+		&:before {
+			content:'';
+			position: absolute;
+			width: 100%;
+			height: 100%;
+			top: 0;
+			left: 0;
+			background-color: rgba(28, 31, 37, 0.6);
+		}
+		@media (max-width:$md2+px){
+			padding: 120px 30px;
+		}
+		@media (max-width:$md3+px){
+			border-radius: 10px;
+			padding: 130px 20px;
+		}
+	}
+
+	&__text {
+		font-size: 20px;
+		font-weight: 300;
+		line-height: calc(31px / 25px * 100%);
+		color: #E3E6EC;
+		position: relative;
+		z-index: 2;
+		@media (max-width:$md2+px){
+			font-size: 16px;
+		}
+	}
+
+	&__title {
+		font-weight: 700;
+		font-size: 35px;
+		line-height: calc(47px / 40px * 100%);
+		color: #FFFFFF;
+		position: relative;
+		z-index: 2;
+		margin: 0px 0px 20px 0px;
+		@media (max-width:$md2+px){
+			font-size: 25px;
+			margin: 0px 0px 15px 0px;
+		}
+	}
+
+	&__link {
+	}
+}
+
+//========================================================================================================================
+.info {
+	&__container {
+	}
+
+	&__body {
+		@include flexbox();
+		align-items: center;
+		@media (min-width:550px){
+			&_1 {
+				.info__image {
+					order: 2;
+					justify-content: flex-end;
+					&:before {
+						left: 0;					
+					}
+				}
+				.info__box {
+					order: 1;
+					padding: 0px 20px;
+				}
+			}	
+		}
+		@media (max-width:550px){
+			flex-direction: column;
+		}
+	}
+
+	&__image {
+		flex: 0 1 50%;
+		height: 100vh;
+		position: relative;
+		@include flexbox();
+		align-items: center;
+		&:before {
+			content:'';
+			position: absolute;
+			z-index: -1;
+			width: 100vw;
+			height: 100%;
+			right: 0;
+			background: rgba(4, 143, 156, 0.3);
+		}
+		@media (max-width:550px){
+			margin: 0px 0px 10px 0px;
+			height: 100%;
+			width: 100%;
+			justify-content: center;
+			padding: 10px;
+			border-radius: 10px;
+			background: rgba(4, 143, 156, 0.3);
+			&:before {
+				display: none;		
+			}
+		}
+	}
+
+	&__img {
+		border-radius: 20px;
+		background: #136D84;
+		display: inline-block;
+		width: 380px;
+		padding: 30px;
+		img {
+			max-width: 100%;
+		}
+		@media (max-width:$md2+px){
+			padding: 15px;
+			width: 300px;
+		}
+		@media (max-width:$md3+px){
+			padding: 10px;
+			width: 240px;
+			border-radius: 10px	;
+		}
+
+	}
+
+	&__box {
+		flex: 0 1 50%;
+		color: #000000;
+		padding: 0px 0px 0px 40px;
+		@media (max-width:$md3+px){
+			padding: 0px 0px 0px 30px;
+		}
+		@media (max-width:550px){
+			padding: 0px 0px 0px 15px;	
+		}
+	}
+
+	&__title {
+		font-weight: 500;
+		font-size: 22px;
+		line-height: calc(30px / 25px * 100%);
+		margin: 0px 0px 30px 0px;
+		@media (max-width:$md2+px){
+			font-size: 18px;
+			margin: 0px 0px 15px 0px;
+		}
+		@media (max-width:$md3+px){
+			font-size: 15px;
+			margin: 0px 0px 10px 0px;
+		}
+	}
+
+	&__texts {
+		font-size: 18px;
+		line-height: calc(24px / 20px * 100%);
+		@media (max-width:$md2+px){
+			font-size: 15px;
+		}
+		@media (max-width:$md3+px){
+			font-size: 12px;
+		}
+	}
+
+	&__text {
+		margin: 0px 0px 10px 0px;
+		@media (max-width:370px){
+			margin: 0px 0px 8px 0px;
+		}
+	}
+}
+//========================================================================================================================
+
+//</ОСНОВНОЙ БЛОК>========================================================================================================
+
+
+
+
